@@ -21,7 +21,7 @@ app.use(morgan('dev'));
 
 app.use("/api/v1/user",require("./routes/userRoutes"));
 
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 8981;
 app.listen(port,()=>{
     console.log("Server is running".green);
 })
