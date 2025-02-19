@@ -10,6 +10,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@ant-design/v5-patch-for-react-19": "^1.0.3",
     "bcrypt": "^5.1.1",
     "bcryptjs": "^3.0.0",
     "colors": "^1.4.0",
