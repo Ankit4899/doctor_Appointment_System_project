@@ -15,9 +15,11 @@ const Login = () => {
     try {
       dispatch(showLoading());
       const res = await axios.post("/api/v1/user/login", values);
+      window.location.reload()
       dispatch(hideLoading());
-      localStorage.setItem("token", res.data.token);
+
       if (res.data.success) {
+        localStorage.setItem("token", res.data.token);
         message.success("Login success");
         navigate("/");
       } else {
