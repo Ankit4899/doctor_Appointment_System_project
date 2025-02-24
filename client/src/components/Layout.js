@@ -48,8 +48,8 @@ const Layout = ({ children }) => {
           <div className="content">
             <div className="header">
               <div className="header-content">
-                <i class="fa-solid fa-bell"></i>
-                <Link to="/profile">{user?.name}</Link>
+                <i className="fa-solid fa-bell"></i>
+                <Link to="/profile">Hi, {user?.name}</Link>
               </div>
             </div>
             <div className="body">{children}</div>
