@@ -1,9 +1,40 @@
 import React from "react";
 import Layout from "../components/Layout";
-import { Col, Form, Input, Row, TimePicker } from "antd";
+import { Col, Form, Input, Row, TimePicker ,message,Badge} from "antd";
+import { useSelector,useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import {showLoading,hideLoading} from '../redux/features/alertSlice'
+import axios from 'axios'
+
+
+
 const ApplyDoctor = () => {
-  const handleFinish = (values) => {
-    console.log(values);
+const {user} = useSelector(state => state.user)
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const handleFinish = async (values) => {
+    // console.log(values);
+    try{
+dispatch(showLoading());
+const res = await axios.post('/api/v1/user/apply-doctor',{...values,userId:user._id},{
+  headers:{
+    Authorization:`Bearer ${localStorage.getItem('token')}`,
+  }
+})
+dispatch(hideLoading());
+if(res.data.success){
+  message.success(res.data.success)
+  navigate('/')
+}else{
+  message.error(res.data.success)
+}
+
+
+    }catch(err){
+      dispatch(hideLoading());
+      console.log(err);
+      message.error("something went wrong")
+    }
   };
   return (
     <Layout>
@@ -120,13 +151,17 @@ const ApplyDoctor = () => {
               required
               rules={[{ required: true }]}
             >
-              <TimePicker.RangePicker/>
+              <TimePicker.RangePicker format="HH:mm"/>
             </Form.Item>
           </Col>
-        </Row>
-        <div className="d-flex justify-content-end">
-            <button className="btn btn-primary" type="submit">Submit</button>
+          <Col xs={24} md={24} lg={8}></Col>
+          <Col xs={24} md={24} lg={8}>
+          <div className="d-flex justify-content-end">
+            <button className="btn btn-primary form-btn" type="submit">Submit</button>
         </div>
+          </Col>
+        </Row>
+        
       </Form>
     </Layout>
   );
