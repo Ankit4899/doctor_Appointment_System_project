@@ -6,6 +6,7 @@ import Spinner from "./components/Spinner";
 import ApplyDoctor from "./pages/ApplyDoctor";
 import HomePage from "./pages/HomePage";
 import Login from "./pages/Login";
+import Notifications from "./pages/Notifications";
 import Register from "./pages/Register";
 
 function App() {
@@ -33,6 +34,16 @@ function App() {
                 </ProtectedRoutes>
               }
             />
+
+            <Route
+              path="/get-all-notification"
+              element={
+                <ProtectedRoutes>
+                  <Notifications />
+                </ProtectedRoutes>
+              }
+            />
+
             <Route
               path="/login"
               element={

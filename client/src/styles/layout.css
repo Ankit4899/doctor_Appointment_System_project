@@ -84,3 +84,20 @@
   margin: 0 10px;
   text-transform: uppercase;
 }
+
+.badge-container {
+  position: relative;
+  display: flex;
+  cursor: pointer;
+}
+
+.badge-container .fa-bell {
+  position: absolute;
+  top: 10px;  /* Adjust based on your design */
+  left: 10px; /* Adjust to align properly */
+  font-size: 16px;
+  justify-content: center;
+  align-items: center;
+  padding: 1px;
+  color: black; /* Change color as needed */
+}

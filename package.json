@@ -1,4 +1,5 @@
 {
+  "type": "module",
   "scripts": {
     "server": "cd ./backend && node app.js",
     "client": "cd ./client && npm start",

@@ -1,6 +1,7 @@
 import React,{useEffect} from 'react'
 import axios from 'axios'
 import Layout from '../components/Layout';
+import '@ant-design/v5-patch-for-react-19';
 const HomePage = () => {
   const getUserData=async ()=>{
       try{

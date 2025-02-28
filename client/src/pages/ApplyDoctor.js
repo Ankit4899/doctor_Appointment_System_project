@@ -1,5 +1,6 @@
 import React from "react";
 import Layout from "../components/Layout";
+import '@ant-design/v5-patch-for-react-19';
 import { Col, Form, Input, Row, TimePicker ,message,Badge} from "antd";
 import { useSelector,useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -100,11 +101,11 @@ if(res.data.success){
           <Col xs={24} md={24} lg={8}>
             <Form.Item
               label="Address"
-              name="firstaddressName"
+              name="address"
               required
               rules={[{ required: true }]}
             >
-              <Input type="text" placeholder="Your adress" />
+              <Input type="text" placeholder="Your address" />
             </Form.Item>
           </Col>
         </Row>

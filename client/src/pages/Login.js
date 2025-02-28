@@ -1,4 +1,5 @@
 import React from "react";
+import '@ant-design/v5-patch-for-react-19';
 import { Form, Input, message } from "antd";
 import "../styles/LoginStyle.css";
 import { Link, useNavigate } from "react-router-dom";

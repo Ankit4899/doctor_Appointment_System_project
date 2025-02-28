@@ -4,7 +4,8 @@ import { adminMenu, userMenu } from "./../data/data";
 
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { message ,Badge,Avatar} from "antd";
+import "@ant-design/v5-patch-for-react-19";
+import { message, Badge, Avatar, ConfigProvider } from "antd";
 const Layout = ({ children }) => {
   const { user } = useSelector((state) => state.user);
   const location = useLocation();
@@ -47,11 +48,21 @@ const Layout = ({ children }) => {
           </div>
           <div className="content">
             <div className="header">
-              <div className="header-content">
-                <Badge count={user && user.notification.length}>
-                  <Avatar shape="square" size="large"/>
-                </Badge>
-                <i className="fa-solid fa-bell"></i>
+              <div className="header-content" style={{ cursor: "pointer" }}>
+                <div
+                  className="badge-container"
+                  onClick={() => navigate("/get-all-notification")}
+                >
+                  <ConfigProvider>
+                    <Badge
+                      count={user?.notification.length ?? 0}
+                      style={{ cursor: "pointer" }}
+                    >
+                      <Avatar shape="square" size="large" />
+                    </Badge>
+                  </ConfigProvider>
+                  <i className="fa-solid fa-bell"></i>
+                </div>
                 <Link to="/profile">Hi, {user?.name}</Link>
               </div>
             </div>
