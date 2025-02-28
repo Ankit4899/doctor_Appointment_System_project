@@ -36,7 +36,7 @@ function App() {
             />
 
             <Route
-              path="/get-all-notification"
+              path="/notification"
               element={
                 <ProtectedRoutes>
                   <Notifications />

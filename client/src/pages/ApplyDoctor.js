@@ -87,7 +87,7 @@ if(res.data.success){
             </Form.Item>
           </Col>
 
-          <Col xs={24} md={24} lg={8}>
+          {/* <Col xs={24} md={24} lg={8}>
             <Form.Item
               label="Website"
               name="website"
@@ -96,7 +96,7 @@ if(res.data.success){
             >
               <Input type="text" placeholder="Your website" />
             </Form.Item>
-          </Col>
+          </Col> */}
 
           <Col xs={24} md={24} lg={8}>
             <Form.Item

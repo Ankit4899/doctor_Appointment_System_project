@@ -51,7 +51,7 @@ const Layout = ({ children }) => {
               <div className="header-content" style={{ cursor: "pointer" }}>
                 <div
                   className="badge-container"
-                  onClick={() => navigate("/get-all-notification")}
+                  onClick={() => navigate("/notification")}
                 >
                   <ConfigProvider>
                     <Badge
