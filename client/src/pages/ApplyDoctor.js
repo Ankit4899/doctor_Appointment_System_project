@@ -1,13 +1,24 @@
 import React from "react";
 import Layout from "../components/Layout";
 import '@ant-design/v5-patch-for-react-19';
-import { Col, Form, Input, Row, TimePicker ,message,Badge} from "antd";
+import { Col, Form, Input, Row, TimePicker ,message,Badge,Select } from "antd";
 import { useSelector,useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {showLoading,hideLoading} from '../redux/features/alertSlice'
 import axios from 'axios'
 
+const { Option } = Select;
 
+const specializationOptions = [
+  "Cardiologist",
+  "Dermatologist",
+  "Neurologist",
+  "Orthopedic",
+  "Pediatrician",
+  "Psychiatrist",
+  "General Physician",
+  "Others",
+];
 
 const ApplyDoctor = () => {
 const {user} = useSelector(state => state.user)
@@ -112,7 +123,7 @@ if(res.data.success){
 
         <h4 className="">Professional details:</h4>
         <Row gutter={15}>
-          <Col xs={24} md={24} lg={8}>
+          {/* <Col xs={24} md={24} lg={8}>
             <Form.Item
               label="Specialization"
               name="specialization"
@@ -121,7 +132,25 @@ if(res.data.success){
             >
               <Input type="text" placeholder="Your specialization" />
             </Form.Item>
-          </Col>
+          </Col> */}
+
+
+<Col xs={24} md={24} lg={8}>
+  <Form.Item
+    label="Specialization"
+    name="specialization"
+    rules={[{ required: true, message: "Please select your specialization" }]}
+  >
+    <Select placeholder="Select Specialization">
+      {specializationOptions.map((specialization) => (
+        <Option key={specialization} value={specialization}>
+          {specialization}
+        </Option>
+      ))}
+    </Select>
+  </Form.Item>
+</Col>;
+
 
           <Col xs={24} md={24} lg={8}>
             <Form.Item
