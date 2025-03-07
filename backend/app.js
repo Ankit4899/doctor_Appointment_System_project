@@ -10,6 +10,8 @@ connectDB();
 const app = express();
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 app.use(morgan('dev'));
 
 
@@ -20,7 +22,8 @@ app.use(morgan('dev'));
 // });
 
 app.use("/api/v1/user",require("./routes/userRoutes"));
-
+app.use("/api/v1/admin",require("./routes/adminRoutes"));
+app.use("/api/v1/doctor",require("./routes/doctorRoutes"));
 const port = process.env.PORT || 8981;
 app.listen(port,()=>{
     console.log("Server is running".green);

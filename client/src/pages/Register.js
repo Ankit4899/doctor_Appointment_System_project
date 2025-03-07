@@ -1,18 +1,24 @@
 import React from "react";
+import '@ant-design/v5-patch-for-react-19';
 import { Form,Input,message } from "antd";
 import '@ant-design/v5-patch-for-react-19';
 import "../styles/RegisterStyle.css";
 import {Link,useNavigate} from 'react-router-dom';
 import axios from 'axios';
+import { useDispatch } from "react-redux";
+import { hideLoading, showLoading } from "../redux/features/alertSlice";
 
 
 const Register = () => {
 const navigate = useNavigate();
+const dispatch = useDispatch();
     // Form handler
   const onFinishHandler = async (values) => {
     // console.log(values);
     try{
+      dispatch(showLoading());
       const res = await axios.post('/api/v1/user/register',values);
+      dispatch(hideLoading());
       if(res.data.success){
         message.success("Registerd successfully");
         navigate('/login');
@@ -20,6 +26,7 @@ const navigate = useNavigate();
         message.error(res.data.message);
       }
     }catch(err){
+      dispatch(hideLoading());
       console.log(err);
       message.error('something went wrong')
     }
