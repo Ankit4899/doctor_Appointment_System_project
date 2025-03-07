@@ -1,11 +1,21 @@
 import React from "react";
 import Layout from "../components/Layout";
-import '@ant-design/v5-patch-for-react-19';
-import { Col, Form, Input, Row, TimePicker ,message,Badge,Select } from "antd";
-import { useSelector,useDispatch } from "react-redux";
+import "@ant-design/v5-patch-for-react-19";
+import moment from "moment";
+import {
+  Col,
+  Form,
+  Input,
+  Row,
+  TimePicker,
+  message,
+  Badge,
+  Select,
+} from "antd";
+import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import {showLoading,hideLoading} from '../redux/features/alertSlice'
-import axios from 'axios'
+import { showLoading, hideLoading } from "../redux/features/alertSlice";
+import axios from "axios";
 
 const { Option } = Select;
 
@@ -21,31 +31,40 @@ const specializationOptions = [
 ];
 
 const ApplyDoctor = () => {
-const {user} = useSelector(state => state.user)
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
+  const { user } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const handleFinish = async (values) => {
     // console.log(values);
-    try{
-dispatch(showLoading());
-const res = await axios.post('/api/v1/user/apply-doctor',{...values,userId:user._id},{
-  headers:{
-    Authorization:`Bearer ${localStorage.getItem('token')}`,
-  }
-})
-dispatch(hideLoading());
-if(res.data.success){
-  message.success(res.data.success)
-  navigate('/')
-}else{
-  message.error(res.data.success)
-}
-
-
-    }catch(err){
+    try {
+      dispatch(showLoading());
+      const res = await axios.post(
+        "/api/v1/user/apply-doctor",
+        {
+          ...values,
+          userId: user._id,
+          timings: [
+            moment(values.timings[0].format("HH:mm")),
+            moment(values.timings[1].format("HH:mm")),
+          ],
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+      dispatch(hideLoading());
+      if (res.data.success) {
+        message.success(res.data.success);
+        navigate("/");
+      } else {
+        message.error(res.data.success);
+      }
+    } catch (err) {
       dispatch(hideLoading());
       console.log(err);
-      message.error("something went wrong")
+      message.error("something went wrong");
     }
   };
   return (
@@ -133,25 +152,27 @@ if(res.data.success){
               <Input type="text" placeholder="Your specialization" />
             </Form.Item>
           </Col> */}
-
-
-<Col xs={24} md={24} lg={8}>
-  <Form.Item
-    label="Specialization"
-    name="specialization"
-    rules={[{ required: true, message: "Please select your specialization" }]}
-  >
-    <Select placeholder="Select Specialization">
-      {specializationOptions.map((specialization) => (
-        <Option key={specialization} value={specialization}>
-          {specialization}
-        </Option>
-      ))}
-    </Select>
-  </Form.Item>
-</Col>;
-
-
+          <Col xs={24} md={24} lg={8}>
+            <Form.Item
+              label="Specialization"
+              name="specialization"
+              rules={[
+                {
+                  required: true,
+                  message: "Please select your specialization",
+                },
+              ]}
+            >
+              <Select placeholder="Select Specialization">
+                {specializationOptions.map((specialization) => (
+                  <Option key={specialization} value={specialization}>
+                    {specialization}
+                  </Option>
+                ))}
+              </Select>
+            </Form.Item>
+          </Col>
+          ;
           <Col xs={24} md={24} lg={8}>
             <Form.Item
               label="Experience"
@@ -162,7 +183,6 @@ if(res.data.success){
               <Input type="text" placeholder="Your experience" />
             </Form.Item>
           </Col>
-
           <Col xs={24} md={24} lg={8}>
             <Form.Item
               label="Fee"
@@ -173,7 +193,6 @@ if(res.data.success){
               <Input type="text" placeholder="Your fee" />
             </Form.Item>
           </Col>
-
           <Col xs={24} md={24} lg={8}>
             <Form.Item
               label="Timings"
@@ -181,17 +200,18 @@ if(res.data.success){
               required
               rules={[{ required: true }]}
             >
-              <TimePicker.RangePicker format="HH:mm"/>
+              <TimePicker.RangePicker format="HH:mm" />
             </Form.Item>
           </Col>
           <Col xs={24} md={24} lg={8}></Col>
           <Col xs={24} md={24} lg={8}>
-          <div className="d-flex justify-content-end">
-            <button className="btn btn-primary form-btn" type="submit">Submit</button>
-        </div>
+            <div className="d-flex justify-content-end">
+              <button className="btn btn-primary form-btn" type="submit">
+                Submit
+              </button>
+            </div>
           </Col>
         </Row>
-        
       </Form>
     </Layout>
   );
