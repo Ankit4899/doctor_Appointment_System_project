@@ -101,7 +101,7 @@ const BookingPage = () => {
 
   useEffect(() => {
     getUserData();
-  }, []);
+  },[]);
   return (
     <Layout>
       <h3>BookingPage</h3>
