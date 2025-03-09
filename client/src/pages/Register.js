@@ -32,7 +32,12 @@ const dispatch = useDispatch();
     }
   };
   return (
-    <>
+    <div className="container">
+    { <img
+src="/das.jpg"  // Ensure this image is in your public folder
+alt="Doctor"
+className="doctor-img"
+/> }
       <div className="form-container">
         <Form layout="vertical" onFinish={onFinishHandler} className="register-form">
           <h1 className="text-center">User Registeration</h1>
@@ -51,7 +56,7 @@ const dispatch = useDispatch();
           <Link to='/login' className='m-2'>Already registered? Login</Link>
         </Form>
       </div>
-    </>
+    </div>
   );
 };
 

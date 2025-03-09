@@ -9,6 +9,7 @@ import Users from "./pages/admin/Users";
 import ApplyDoctor from "./pages/ApplyDoctor";
 import Appointments from "./pages/Appointments";
 import BookingPage from "./pages/BookingPage";
+import DoctorAppointments from "./pages/doctors/DoctorAppointments";
 import Profile from "./pages/doctors/Profile";
 import HomePage from "./pages/HomePage";
 import Login from "./pages/Login";
@@ -105,6 +106,14 @@ function App() {
               element={
                 <ProtectedRoute>
                   <Appointments />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/doctor-appointments"
+              element={
+                <ProtectedRoute>
+                  <DoctorAppointments />
                 </ProtectedRoute>
               }
             />

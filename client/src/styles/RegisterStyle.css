@@ -1,11 +1,136 @@
-.form-container{
+/* Full-page background with a medical theme */
+.container {
     display: flex;
-    align-items: center;
     justify-content: center;
-    height: 100vh;
-}
-.register-form{
-    border: 2px solid black;
+    align-items: center;
+    /* height: 100vh; */
+    /* background: url('https://source.unsplash.com/1600x900/?hospital,doctor') no-repeat center center/cover; */
+background-color: azure;
     padding: 20px;
-    border-radius: 10px;
-}
+  }
+  
+  /* Glassmorphism effect for the form container */
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(15px);
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    border: 1px solid black(255, 255, 255, 0.3);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  /* Doctor Illustration */
+  .doctor-img {
+    width: 120px;
+    height: auto;
+    margin-bottom: 10px;
+    animation: float 2s infinite;
+  }
+  
+  /* Form heading */
+  .text-center {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #01579b;
+    margin-bottom: 1rem;
+  }
+  
+  /* Form labels */
+  .ant-form-item-label label {
+    font-weight: 600;
+    color: #0277bd;
+  }
+  
+  /* Input field styling with icons */
+  .input-container {
+    position: relative;
+  }
+  
+  .input-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #0288d1;
+  }
+  
+  .ant-input {
+    padding: 12px 12px 12px 40px;
+    border-radius: 8px;
+    border: 1px solid #81d4fa;
+    transition: all 0.3s ease-in-out;
+    font-size: 1rem;
+  }
+  
+  .ant-input:focus {
+    border-color: #0288d1;
+    box-shadow: 0 0 8px rgba(2, 136, 209, 0.5);
+  }
+  
+  /* Stylish Login Button */
+  .btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .btn-primary {
+    background: linear-gradient(90deg, #0288d1, #26c6da);
+    color: white;
+    box-shadow: 0px 4px 10px rgba(2, 136, 209, 0.3);
+  }
+  
+  .btn-primary:hover {
+    background: linear-gradient(90deg, #01579b, #0097a7);
+    box-shadow: 0px 6px 12px rgba(2, 136, 209, 0.5);
+    transform: translateY(-3px);
+  }
+  
+  /* Register Link */
+  a {
+    display: block;
+    margin-top: 12px;
+    text-decoration: none;
+    color: #01579b;
+    font-weight: 600;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+    color: #0288d1;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 480px) {
+    .form-container {
+      width: 90%;
+      padding: 2rem;
+    }
+  
+    .text-center {
+      font-size: 1.6rem;
+    }
+  
+    .btn {
+      font-size: 0.9rem;
+    }
+  }
+  
+  .doctor-img{
+    height: 50vh;
+    width: 100vh;
+  }

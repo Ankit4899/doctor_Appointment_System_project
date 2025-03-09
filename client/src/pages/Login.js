@@ -33,7 +33,13 @@ const Login = () => {
     }
   };
   return (
-    <>
+    <div className="container">
+{/* Doctor Illustration */}
+{ <img
+src="/doc.jpg"  // Ensure this image is in your public folder
+alt="Doctor"
+className="doctor-img"
+/> }
       <div className="form-container">
         <Form
           layout="vertical"
@@ -56,7 +62,7 @@ const Login = () => {
           </Link>
         </Form>
       </div>
-    </>
+    </div>
   );
 };
 
