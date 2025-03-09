@@ -3,8 +3,11 @@
     "server": "cd ./backend && node app.js",
     "client": "cd ./client && npm start",
     "start": "concurrently -k \"npm run server\" \"npm run client\""
-  },  
+  },
   "dependencies": {
-    "concurrently": "^9.1.2"
+    "@reduxjs/toolkit": "^2.5.1",
+    "concurrently": "^9.1.2",
+    "moment": "^2.30.1",
+    "react-redux": "^9.2.0"
   }
 }
